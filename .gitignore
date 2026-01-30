@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints
+
+# Results (keep for submission)
+# results/
+
+# Test results (don't submit)
+results_quicktest/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Documentation (helper files, not for submission)
+REPORT_TEMPLATE.md
+HOW_TO_COMPLETE_REPORT.md
+FINAL_VERIFICATION.md
+CHECKLIST.md
+quick_test.py
+
+# OS
+.DS_Store
+Thumbs.db
