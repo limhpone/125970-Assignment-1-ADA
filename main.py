@@ -37,6 +37,10 @@ def run_greedy_experiments():
     alpha_values = [0.1, 1, 5]
     trials = 10
     
+    total_configs = len(n_values) * len(alpha_values)
+    print(f"Total configurations: {total_configs}")
+    print(f"This will take approximately 10-15 minutes\n")
+    
     # Run benchmarks
     results = benchmark_greedy_algorithms(
         n_values=n_values,
@@ -84,6 +88,10 @@ def run_exhaustive_experiments():
     alpha_values = [0.1, 1, 5]
     trials = 10
     
+    total_configs = len(n_values) * len(alpha_values)
+    print(f"Total configurations: {total_configs}")
+    
+    
     # Run benchmarks
     results = benchmark_exhaustive_algorithm(
         n_values=n_values,
@@ -126,6 +134,10 @@ def run_solution_quality_analysis():
     alpha_values = [0.1, 1, 5]
     trials = 10
     
+    total_configs = len(n_values) * len(alpha_values)
+    print(f"Total configurations: {total_configs}")
+    print(f"This will take approximately 10-15 minutes\n")
+    
     generator = IntervalGenerator()
     algorithms = {
         'EFT': earliest_finish_time,
@@ -134,13 +146,16 @@ def run_solution_quality_analysis():
     }
     
     quality_results = {}
+    config_count = 0
     
     for alpha in alpha_values:
         print(f"\nAlpha = {alpha}")
         quality_results[alpha] = {}
         
         for n in n_values:
-            print(f"  n = {n}...", end=' ', flush=True)
+            config_count += 1
+            progress = (config_count / total_configs) * 100
+            print(f"  [{config_count}/{total_configs}] n = {n} ({progress:.1f}%)...", end=' ', flush=True)
             
             quality_results[alpha][n] = {}
             

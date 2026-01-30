@@ -130,12 +130,17 @@ def benchmark_greedy_algorithms(
     print(f"n values: {n_values}")
     print(f"Trials: {trials}\n")
     
+    total = len(alpha_values) * len(n_values)
+    count = 0
+    
     for alpha in alpha_values:
         print(f"\nAlpha = {alpha}")
         results[alpha] = {}
         
         for n in n_values:
-            print(f"  n = {n}...", end=' ')
+            count += 1
+            progress = (count / total) * 100
+            print(f"  [{count}/{total}] n = {n} ({progress:.1f}%)...", end=' ', flush=True)
             
             # Generate datasets for all trials
             datasets = [
@@ -185,16 +190,21 @@ def benchmark_exhaustive_algorithm(
     print(f"Alpha values: {alpha_values}")
     print(f"Trials per configuration: {trials}\n")
     
+    total = len(alpha_values) * len(n_values)
+    count = 0
+    
     for alpha in alpha_values:
         print(f"\nAlpha = {alpha}")
         results[alpha] = {}
         
         for n in n_values:
+            count += 1
+            progress = (count / total) * 100
             if n > max_n:
-                print(f"  n = {n}... Skipped (too large)")
+                print(f"  [{count}/{total}] n = {n} - Skipped (too large)")
                 continue
             
-            print(f"  n = {n}...", end=' ', flush=True)
+            print(f"  [{count}/{total}] n = {n} ({progress:.1f}%)...", end=' ', flush=True)
             
             # Generate datasets
             datasets = [
@@ -206,7 +216,7 @@ def benchmark_exhaustive_algorithm(
             stats = run_trials(exhaustive_search_optimized, datasets, warmup=True)
             results[alpha][n] = stats
             
-            print(f"  n = {n}... done ({stats['mean']:.6f}s)")
+            print(f"done ({stats['mean']:.6f}s)")
             
             # Stop if taking too long
             if stats['mean'] > 10.0:

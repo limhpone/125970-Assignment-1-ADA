@@ -25,6 +25,15 @@
    ```bash
    python main.py
    ```
+python main.py
+
+python run_experiments.py
+
+# Activate environment
+.\.venv\Scripts\Activate.ps1
+
+# Run full experiment (~45 min)
+python main.py
 
 ## Algorithms Implemented
 
