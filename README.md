@@ -33,7 +33,6 @@ python plots.py --results_dir results
 Outputs:
 - `results/*.csv` (trial summaries)
 - `results/plots/*.png` (required plots)
-- Use `report_template.md` for your report write-up.
 
 ## Notes
 - Timing excludes dataset generation time (as required).
